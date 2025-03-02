@@ -1,0 +1,18 @@
+def generate_sonnet():
+  return '''Love and sacrifice, two forces intertwined
+With every breath, our hearts they do besiege
+For one without the other, love confined
+And sacrifice without love, a loveless siege
+
+For love, we give up all we hold so dear
+Our time, our pride, our selfishness we shed
+To see our loved one's smile, to wipe their tear
+We sacrifice it all, without a second dread
+
+But oh, how love and sacrifice they do blend
+For in the giving, love does only grow
+And in the sacrifice, love does transcend
+To heights unknown, where only true love flows
+
+So let us embrace these two, hand in hand
+For love and sacrifice, they make us grand'''

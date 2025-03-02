@@ -1,0 +1,45 @@
+def generate_sonnet():
+    """
+    This function generates a contemporary sonnet about love and sacrifice.
+
+    Returns:
+        A contemporary sonnet as a string.
+    """
+
+    # Define variables for the different parts of the sonnet
+    sonnet = ""
+    title = "Love and Sacrifice"
+    rhyme_scheme = "ABAB CDCD EFEF GG"
+    line_length = 10
+    lines_per_quatrain = 4
+
+    # Create the first quatrain
+    sonnet += "In love's embrace, I find my solace sweet,\n"
+    sonnet += "But sacrifice, a price I must still pay,\n"
+    sonnet += "For every kiss, a drop of blood will meet,\n"
+    sonnet += "My heart, a canvas for love's grand display.\n"
+
+    # Create the second quatrain
+    sonnet += "With every breath, my love for you grows deep,\n"
+    sonnet += "But sacrifice, a shadow looms behind,\n"
+    sonnet += "For every smile, a tear will often creep,\n"
+    sonnet += "My soul, a vessel for love's endless grind.\n"
+
+    # Create the third quatrain
+    sonnet += "With every touch, our hearts beat as one,\n"
+    sonnet += "But sacrifice, a burden we must bear,\n"
+    sonnet += "For every joy, a burden must be done,\n"
+    sonnet += "Our love, a journey that we'll always share.\n"
+
+    # Create the final couplet
+    sonnet += "But love and sacrifice, they intertwine,\n"
+    sonnet += "Together, they make our love divine.\n"
+
+    # Add title and rhyme scheme to the beginning of the sonnet
+    sonnet = title + "\n" + rhyme_scheme + "\n\n" + sonnet
+
+    # Return the completed sonnet
+    return sonnet
+
+# Call the function and print the output
+print(generate_sonnet())

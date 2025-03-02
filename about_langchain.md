@@ -6,7 +6,7 @@ In **LangChain**, a **Chain** is a reusable text-generation pipeline. Chains hel
 
 A **Chain** is a combination of a **PromptTemplate** and a **Language Model (LLM)**. Chains can also be **linked together** to create more complex AI-powered workflows.
 
-### 🔹 How a Chain Works:
+### 🛩️ How a Chain Works:
 ```
 Input → Prompt Template+Language Model → Output
 ```
@@ -17,11 +17,11 @@ Where:
 Since a **chain** bundles these two components, we can reuse them in different contexts.
 
 ## 🏗️ Why Use Chains?
-✅ **Reusability**: Create once, use multiple times.  
-✅ **Modularity**: Combine multiple chains for advanced workflows.  
-✅ **Customization**: Easily modify prompts or models without rewriting everything.  
-✅ **Automation**: Reduces manual API calls and processing logic.  
-✅ **Scalability**: Handles complex AI workflows efficiently.  
+💚 **Reusability**: Create once, use multiple times.  
+💚 **Modularity**: Combine multiple chains for advanced workflows.  
+💚 **Customization**: Easily modify prompts or models without rewriting everything.  
+💚 **Automation**: Reduces manual API calls and processing logic.  
+💚 **Scalability**: Handles complex AI workflows efficiently.  
 
 ## 🏠 Two Essential Components of a Chain
 
@@ -46,11 +46,18 @@ Since a **chain** bundles these two components, we can reuse them in different c
 ## 🛠️ Example: Basic LangChain Chain in Python
 
 ```python
+import argparse
 from langchain.chains import LLMChain
 from langchain_openai import OpenAI
 from langchain.prompts import PromptTemplate
 from dotenv import load_dotenv
 import os
+
+# Setup argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("--task", default="return a list of numbers", help="Task to generate code for")
+parser.add_argument("--language", default="python", help="Programming language for the generated code")
+args = parser.parse_args()
 
 # Load API key from .env
 load_dotenv()
@@ -62,8 +69,8 @@ if not OPENAI_API_KEY:
 
 # Define the Prompt Template
 prompt = PromptTemplate(
-    input_variables=["topic"],
-    template="Write a short poem about {topic}."
+    input_variables=["language", "task"],
+    template="Write a {language} function that {task}. The function should be well-structured and return the correct output."
 )
 
 # Initialize the Language Model
@@ -73,16 +80,32 @@ llm = OpenAI(api_key=OPENAI_API_KEY)
 chain = LLMChain(llm=llm, prompt=prompt)
 
 # Run the Chain
-result = chain.invoke({"topic": "the ocean"})
-print(result)
+result = chain.invoke({"language": args.language, "task": args.task})
+print(result["text"])  # Output the generated function
 ```
 
-## 🔥 What This Code Does:
-1. **Loads the API key** from the `.env` file.
-2. **Defines a `PromptTemplate`** to format input dynamically.
-3. **Initializes an OpenAI LLM**.
-4. **Creates an `LLMChain`** that combines the prompt and model.
-5. **Runs the chain** with a specific topic (`"the ocean"`), generating a poem.
+## 🔥 Running the Script
+
+### 💡 Basic Usage
+Simply run the script without arguments, and it will use the default **language (`python`)** and **task (`return a list of numbers`)**:
+```sh
+python main.py
+```
+
+### 💡 Custom Task and Language
+Specify a different programming language and task using command-line arguments:
+```sh
+python main.py --language javascript --task "print hello"
+```
+
+### 💡 Example Output:
+```javascript
+function sayHello() {
+  console.log("Hello");
+}
+
+sayHello(); // This will print "Hello" in the console.
+```
 
 ---
 
@@ -105,16 +128,16 @@ Using LangChain’s `SimpleSequentialChain`, we can link these steps together.
 The **length of a chain** depends on the complexity of the task:
 
 #### 🟢 Short Chains (1-2 Steps)
-✔ Best for **simple tasks**  
-✔ Fast, lightweight, and efficient  
+🏆 Best for **simple tasks**  
+🏆 Fast, lightweight, and efficient  
 
 **Example:**
 - Generate a blog post from a topic.
 - Translate text into another language.
 
 #### 🟡 Medium Chains (3-5 Steps)
-✔ Ideal for **structured workflows**  
-✔ Balances efficiency and customization  
+🏆 Ideal for **structured workflows**  
+🏆 Balances efficiency and customization  
 
 **Example:**
 - **Chatbot Workflow**:
@@ -123,8 +146,8 @@ The **length of a chain** depends on the complexity of the task:
   3. Generate a response.
 
 #### 🔴 Long Chains (6+ Steps)
-✔ Needed for **complex AI applications**  
-✔ More processing power, but enables deep automation  
+🏆 Needed for **complex AI applications**  
+🏆 More processing power, but enables deep automation  
 
 **Example:**
 - **Automated Content Creation**:
@@ -138,9 +161,10 @@ The **length of a chain** depends on the complexity of the task:
 
 ---
 
-### 🔐 Key Takeaways
+### 🔒 Key Takeaways
 - **Chains structure multi-step workflows**, reducing manual work.
 - **They improve efficiency, modularity, and scalability**.
 - **The ideal chain length depends on complexity**—keep it **as short as possible but as long as necessary**.
 
 By structuring interactions using **chains**, we make text generation workflows more **scalable, modular, and reusable**! 🚀
+
